@@ -1,0 +1,193 @@
+:root {
+    /* Color Palette */
+    --background-primary: #212121; /* Deep dark background */
+    --background-secondary: #212121; /* Slightly lighter for elements */
+    --text-primary: #e8e8f2; /* Softer white text */
+    --text-secondary: #a0a0b3; /* Muted gray for secondary text */
+    --accent-primary: #10A37F; /* Teal for accents */
+    --accent-hover: #0E8A64; /* Darker teal for hover */
+    --border-color: #39394d; /* Subtle border color */
+    --user-message-bg: #303030; /* Dark purple for user messages */
+    --ai-message-bg: #303030; /* Slightly lighter purple for AI messages */
+    --shadow-color: rgba(0, 0, 0, 0.15); /* Soft shadow */
+    --input-background: #2f2f2f; /* Slightly lighter input background */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-primary) var(--background-primary);
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    width: 90%;
+    height: 90vh;
+    background: var(--background-secondary);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    color: var(--accent-primary);
+    margin: 20px 0;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+/* Chat Messages Section */
+.response {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-primary) transparent;
+    
+}
+
+#messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Message Bubbles */
+.message {
+    padding: 15px 20px;
+    border-radius: 12px;
+    max-width: 75%;
+    font-size: 1rem;
+    word-wrap: break-word;
+    font-weight: 500;
+    line-height: 1.6;
+    position: relative;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: var(--user-message-bg);
+    font-weight: bolder;
+    color: var(--text-primary);
+    box-shadow: 0 4px 8px var(--shadow-color);
+    border-radius: 30px;
+    padding: 10px 25px;
+}
+
+.ai-message {
+    align-self: flex-start;
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+}
+
+/* Chat Form Section */
+#chat-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background-color: var(--background-secondary);
+    
+}
+
+#user_input {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 25px;
+    border: none;
+    background-color: var(--input-background);
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+#user_input::placeholder {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+#user_input:focus {
+    
+    box-shadow: 0 0 8px var(--accent-primary);
+}
+
+/* Send Button */
+button {
+    padding: 12px 18px;
+    border-radius: 25px;
+    border: none;
+    background-color: var(--accent-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: var(--accent-hover);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        height: 95vh;
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+
+    #user_input {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+}
+
+pre {
+    background-color: #2d2d2d;
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-top: 10px;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+
