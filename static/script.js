@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const initialGreeting = "Hello! I'm JARVIS, your AI assistant. How can I help you today?";
+    const initialGreeting = "Hello! I'm NEO, your AI assistant. How can I help you today?";
     
     // Display the initial greeting
     const greetingDiv = document.createElement('div');
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('messages').appendChild(greetingDiv);
 
     let conversationHistory = [
-        { role: "system", content: "You are the best modern, smart, cool, intelligent genius assistant, especially in mathematics and Gen Z trends." }
+        { role: "system", content: "You are the best modern, smart, cool, intelligent genius assistant, especially in mathematics, a specialised general physician and Gen Z trends." }
     ];
 
     document.getElementById('chat-form').addEventListener('submit', function (event) {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Append user message
         const userMessageDiv = document.createElement('div');
         userMessageDiv.className = 'message user-message';
-        userMessageDiv.innerHTML = `<strong>You:</strong> ${escapeHtml(userInput)}`;
+        userMessageDiv.innerHTML = `<strong></strong> ${escapeHtml(userInput)}`;
         document.getElementById('messages').appendChild(userMessageDiv);
 
         // Add user message to conversation history
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Show loading indicator
         const loadingDiv = document.createElement('div');
         loadingDiv.className = 'message ai-message loading';
-        loadingDiv.innerHTML = "<strong>JARVIS:</strong> Thinking...";
+        loadingDiv.innerHTML = "<strong></strong> Thinking...";
         document.getElementById('messages').appendChild(loadingDiv);
 
         fetch('/', {
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Format and render the response (detect code and highlight it)
                 const formattedResponse = formatMarkdownWithMath(data.grok_response);
-                aiMessageDiv.innerHTML = `<strong>JARVIS:</strong> ${formattedResponse}`;
+                aiMessageDiv.innerHTML = `<strong></strong> ${formattedResponse}`;
 
                 document.getElementById('messages').appendChild(aiMessageDiv);
                 document.getElementById('user_input').value = ''; // Clear input field
@@ -67,11 +67,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('messages').removeChild(loadingDiv);
                 const errorDiv = document.createElement('div');
                 errorDiv.className = 'message ai-message error';
-                errorDiv.innerHTML = "<strong>JARVIS:</strong> Oops! An error occurred. Please try again.";
+                errorDiv.innerHTML = "<strong>NEO:</strong> Oops! An error occurred. Please try again.";
                 document.getElementById('messages').appendChild(errorDiv);
             });
     });
 });
+
+
 
 // Utility function to escape HTML (prevent XSS)
 function escapeHtml(string) {
@@ -93,6 +95,8 @@ function formatAIResponse(response) {
 function formatMarkdownWithMath(text) {
     if (!text) return '';
 
+    
+
     // Convert LaTeX syntax to MathJax-compatible format
     const processedText = text
         // Handle block math (\[...\])
@@ -106,7 +110,10 @@ function formatMarkdownWithMath(text) {
 
     // Format Markdown syntax
     return processedText
-        // Headings
+        
+        .replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+     // Headings
+     // Headings
         .replace(/^# (.*$)/gim, '<h1>$1</h1>')
         .replace(/^## (.*$)/gim, '<h2>$1</h2>')
         .replace(/^### (.*$)/gim, '<h3>$1</h3>')

@@ -25,7 +25,7 @@ def index():
             "messages": conversation,
             "model": "grok-beta",
             "stream": False,
-            "temperature": 0
+            "temperature": 0.4
         }
 
         # Send the POST request to the Grok API
@@ -36,7 +36,7 @@ def index():
             grok_response = response.json().get('choices', [{}])[0].get('message', {}).get('content', '')
             return jsonify({'grok_response': grok_response})
         else:
-            return jsonify({'grok_response': "Sorry, there was an error with the Grok API."})
+            return jsonify({'grok_response': "Sorry, there was an error with the NEO API."})
 
     return render_template('new.html')
 

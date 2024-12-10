@@ -113,7 +113,7 @@ h1 {
 
 #user_input {
     flex: 1;
-    padding: 12px 15px;
+    padding: 20px 15px;
     border-radius: 25px;
     border: none;
     background-color: var(--input-background);
