@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # Define your Grok API endpoint and the Bearer token
 GROK_API_URL = "https://api.x.ai/v1/chat/completions"
-GROK_API_KEY = os.getenv('GROK_API_KEY')
+GROK_API_KEY = "xai-feyRQkFnHTBOmBsU2R0CRy5eVmOZLPQxqYVQMmZwbtfqgrbmsE3oVugammsMTPoa7Zh7MQu8umQngQsV"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
